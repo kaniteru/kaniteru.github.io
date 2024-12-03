@@ -8,6 +8,18 @@
 
         }
 
+        #h1-title {
+            font-size: 6vmin;
+        }
+
+        #p-git {
+            font-size: 3vmin;
+        }
+
+        #p-tran {
+            font-size: 3vmin;
+        }
+
         #div-body {
             display: flex;
             flex-direction: column;
@@ -99,30 +111,17 @@
 <body>
 <div id="div-body">
 <div id="div-hdr">
-    <h1>RikkiPatcher Usage</h1>
-    <a href="https://github.com/kaniteru/rikkipatcher">Github</a>
+    <h1 id="h1-title">RikkiPatcher Usage</h1>
+    <a href="https://github.com/kaniteru/rikkipatcher" id="p-git">Github</a><br><br>
+    <a href="https://github.com/kaniteru/RikkiPatcher-Patches" id="p-tran">Are you interested in contributing to translation work?</a>
+    <br>
 </div>
-<!--<div id="div-lang">
-    <div id="div-lang-selector">
-        <div><p>Select page language</p></div>
-        <div>
-            <label>
-                <input type="radio" name="lang" value="en-us" checked="checked">
-                English
-            </label>
-            <label>
-                <input type="radio" name="lang" value="ko-kr">
-                Korean
-            </label>
-        </div>
-    </div>
-</div>-->
 
 <div id="div-usage">
     <div class="div-step">
         <div class="div-step-desc">
             <h3>Step 1</h3>
-            <p>Download patcher <a href="https://github.com/kaniteru/RikkiPatcher/releases">here</a> or <a href="https://github.com/kaniteru/rikkipatcher">build self</a></p>
+            <p>Download patcher <a href="https://github.com/kaniteru/RikkiPatcher/releases">here</a> or <a href="https://github.com/kaniteru/rikkipatcher">build</a></p>
         </div>
         <div class="div-step-img">
         </div>
@@ -153,32 +152,42 @@
     <div class="div-step">
         <div class="div-step-desc">
             <h3>Apply patch to game</h3>
-            <p>Modify game using imported data.</p>
-            <br><br>
+            <p>Modify game using imported custom patch data.</p>
+            <br>
             <p>Press the 'Apply patch to game' button then, select the folder containing the modified data and press 'Start Patch' button.</p>
         </div>
     </div>
 
     <div class="div-step">
         <div id="div-step-how-modify" class="div-step-desc">
-            <h3>How to make modified data?</h3>
-            <p>1. Use <b>'Extract data from game'</b> then copy the extracted data.</p>
-            <img src="res/apply-1.png">
-            <img src="res/apply-2.png">
+            <h3>How to make modify & apply custom patch data into game?</h3>
+            <p>1. Use <b>'Extract data from game'</b></p>
+            <img src="res/img/patch-1.png">
+            <img src="res/img/patch-2.png">
             <br>
-            <p>2. Create new folder.</p>
-            <img src="res/apply-3.png">
+            <p>2. Copy <b>'extracted' folder</b></p>
+            <img src="res/img/patch-3.png">
             <br>
-            <p>3. Paste the data into created folder.</p>
-            <img src="res/apply-4.png">
+            <p>3. Paste copied folder into different place and renaming folder.</p>
+            <img src="res/img/patch-4.png">
+            <img src="res/img/patch-5.png">
             <br>
-            <p>4. Modify the contents of the files. (Do not change the filename or file extension!)</p>
-            <img src="res/apply-5.png">
+            <p>4. Modify the contents of the folders.<br>
+                Currently, RikkiPatcher support 'dialogues' only.<br>
+                (Do not change the filename or file extension!)</p>
+            <img src="res/img/patch-6.png">
             <br>
-            <p>Finished! Now, you can select the created folder for patching from <b>'Apply patch to game'</b>.</p>
-            <img src="res/apply-6.png">
-            <img src="res/apply-7.png">
-            <img src="res/apply-8.png">
+            <p>5. Click <b>'Apply patch to game'</b> in RikkiPatcher.</p>
+            <img src="res/img/patch-7.png">
+            <br>
+            <p>6. Click <b>'Select Folder'</b>.</p>
+            <img src="res/img/patch-8.png">
+            <br>
+            <p>7. Choose your modified custom patch data folder.</p>
+            <img src="res/img/patch-9.png">
+            <br>
+            <p>8. Click <b>'Start Patch'</b>.</p>
+            <img src="res/img/patch-10.png">
         </div>
         <div class="div-step-img">
 
