@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'Architects Daughter';
+    src: url('fonts/ArchitectsDaughter-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Overlock';
+    src: url('fonts/Overlock-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Overlock';
+    src: url('fonts/Overlock-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Chinese (Traditional) */
+@font-face {
+    font-family: 'LXGW WenKai TC Light';
+    src: url('fonts/LXGWWenKaiTC-Light.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LXGW WenKai TC';
+    src: url('fonts/LXGWWenKaiTC-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'LXGW WenKai TC';
+    src: url('fonts/LXGWWenKaiTC-Bold.ttf');
+    font-weight: bold;
+    font-style: normal;
+}

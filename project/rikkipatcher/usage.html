@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rikki Patcher-Usage</title>
+    <link rel="stylesheet" href="../../fonts.css">
+    <link rel="stylesheet" href="common.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #div-main {
+            height: 100vh;
+            width: 100%;
+        }
+
+        .div-span-bt {
+            margin: 7vmin;
+            text-align: center;
+            font-size: 3vmin;
+        }
+
+        .how {
+            margin: 3vmin;
+            border: 0.3vmin solid black;
+            border-radius: 2vmin;
+            background-color: gray;
+        }
+
+        .h1-title {
+            margin-bottom: 5vmin;
+            text-align: center;
+            font-size: 4vmin;
+            font-family: 'Architects Daughter', serif;
+        }
+
+        .div-how {
+            padding-top: 1vmin;
+            padding-left: 3vmin;
+            display: flex;
+            flex-direction: column;
+
+            font-family: 'Overlock', serif;
+        }
+
+        .div-how-title {
+            font-size: 2.2vmin;
+        }
+
+        .div-how-content {
+            margin: 1.5vmin;
+            font-size: 2vmin;
+        }
+
+        .div-how-img > img {
+            margin-top: 0.5vmin;
+            margin-bottom: 0.5vmin;
+
+            width: 30vmin;
+            height: 30vmin;
+            /*border: 0.1vmin solid purple;*/
+        }
+
+        .div-how-extracted-files {
+            display: flex;
+            flex-direction: column;
+        }
+        .div-how-extracted-files > img {
+            margin-top: 0.5vmin;
+            margin-bottom: 0.5vmin;
+
+            width: 47vmin;
+            height: 28vmin;
+            border: 0.3vmin solid gray;
+        }
+
+        .how.show {
+            animation: rollDown 0.5s forwards;
+            transform-origin: top;
+        }
+
+        .how.hide {
+            animation: rollUp 0.5s forwards;
+            transform-origin: top;
+        }
+
+        @keyframes rollDown {
+            from {
+                transform: scaleY(0);
+                opacity: 0;
+            }
+            to {
+                transform: scaleY(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes rollUp {
+            from {
+                transform: scaleY(1);
+                opacity: 1;
+            }
+            to {
+                transform: scaleY(0);
+                opacity: 0;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="div-main">
+<div id="div-title"></div>
+<div id="div-content">
+    <div class="div-span-bt">
+        <button id="button-patch" class="span-bt bt">How can I apply the patch data into game?</button>
+    </div>
+
+    <div id="div-how_to_apply_patch" class="how hidden">
+        <div class="div-how">
+            <div>
+                <h1 class="h1-title">How can I apply the patch data into game?</h1>
+            </div>
+            <div class="div-how-title">
+                <h2>Step 1</h2>
+            </div>
+            <div class="div-how-content">
+                <div class="div-how-desc">
+                    <p>Click the <b>'Apply patch to game'</b> button.</p>
+                </div>
+                <div class="div-how-img">
+                    <img src="res/img/patch/1.png">
+                </div>
+            </div>
+        </div>
+        <div class="div-how">
+            <div class="div-how-title">
+                <h2>Step 2</h2>
+            </div>
+            <div class="div-how-content">
+                <div class="div-how-desc">
+                    <p>Click the <b>'Select Folder'</b> button then, select patch data folder.</p>
+                </div>
+                <div class="div-how-img">
+                    <img src="res/img/patch/2.png">
+                </div>
+                <div class="div-how-img">
+                    <img src="res/img/patch/3.png">
+                </div>
+            </div>
+        </div>
+        <div class="div-how">
+            <div class="div-how-title">
+                <h2>Step 3</h2>
+            </div>
+            <div class="div-how-content">
+                <div class="div-how-desc">
+                    <p>Click the <b>'Start Patch'</b> button.</p>
+                </div>
+                <div class="div-how-img">
+                    <img src="res/img/patch/4.png">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="div-span-bt">
+        <button id="button-extract" class="span-bt bt">How can I make the custom patch data?</button>
+    </div>
+
+    <div id="div-how_to_make_patch" class="how hidden">
+        <div class="div-how">
+            <div>
+                <h1 class="h1-title">How can I make the custom patch data?</h1>
+            </div>
+            <div class="div-how-title">
+                <h2>Step 1</h2>
+            </div>
+            <div class="div-how-content">
+                <div class="div-how-desc">
+                    <p>Use <b>'Extract data from game'</b>.</p>
+                </div>
+                <div class="div-how-img">
+                    <img src="res/img/extract/1.png">
+                </div>
+                <div class="div-how-img">
+                    <img src="res/img/extract/2.png">
+                </div>
+            </div>
+        </div>
+        <div class="div-how">
+            <div class="div-how-title">
+                <h2>Step 2</h2>
+            </div>
+            <div class="div-how-content">
+                <div class="div-how-desc">
+                    <p>If extract finished, copy the <b>'extracted'</b> folder then, paste into different place.</p>
+                    <p>This folder is your custom patch data.</p>
+                </div>
+                <div class="div-how-img">
+                    <img src="res/img/extract/5.png">
+                </div>
+                <div class="div-how-img">
+                    <img src="res/img/extract/6.png">
+                </div>
+                <div class="div-how-desc">
+                    <p>Renaming the folder if you want.</p>
+                </div>
+                <div class="div-how-img">
+                    <img src="res/img/extract/7.png">
+                </div>
+            </div>
+        </div>
+        <div class="div-how">
+            <div class="div-how-title">
+                <h2>Step 3</h2>
+            </div>
+            <div class="div-how-content">
+                <div class="div-how-desc">
+                    <p>Modify the files in the your custom patch data.</p>
+                    <p>If you need an example, please refer to <a href="" onclick="window.open('https://github.com/kaniteru/RikkiPatcher-Patches', '_blank').focus()">
+                        this repo</a>.</p>
+                    <br>
+                    <p><b>Alert: Don't modify the files in 'migration' folder!</b></p>
+                </div>
+                <div class="div-how-img">
+                    <img src="res/img/extract/8.png">
+                </div>
+
+                <div class="div-how-extracted-files">
+                    <img src="res/img/extract/dialogue_choice_in-game.png">
+                    <img src="res/img/extract/dialog.png">
+                    <img src="res/img/extract/setting.png">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggleButton1 = document.getElementById('button-patch');
+        const toggleButton2 = document.getElementById('button-extract');
+        const div1 = document.getElementById('div-how_to_apply_patch');
+        const div2 = document.getElementById('div-how_to_make_patch');
+
+        toggleButton1.addEventListener('click', function () {
+            if (div1.classList.contains('hidden')) {
+                div1.classList.remove('hidden');
+                div1.classList.remove('hide');
+                div1.classList.add('show');
+            } else if (div1.classList.contains('show')) {
+                div1.classList.remove('show');
+                div1.classList.add('hide');
+                setTimeout(() => {
+                    div1.classList.add('hidden');
+                }, 500);
+            }
+        });
+
+        toggleButton2.addEventListener('click', function () {
+            if (div2.classList.contains('hidden')) {
+                div2.classList.remove('hidden');
+                div2.classList.remove('hide');
+                div2.classList.add('show');
+            } else if (div2.classList.contains('show')) {
+                div2.classList.remove('show');
+                div2.classList.add('hide');
+                setTimeout(() => {
+                    div2.classList.add('hidden');
+                }, 500);
+            }
+        });
+    });
+</script>
+</body>
+</html>

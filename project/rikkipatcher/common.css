@@ -1,0 +1,23 @@
+.bt {
+    padding: 1vmin;
+
+    color: white;
+    font-size: 3vmin;
+    font-family: 'Architects Daughter', serif;
+
+    border: 0;
+    border-radius: 1vmin;
+    background-color: black;
+}
+.bt:hover {
+    background-color: rebeccapurple;
+}
+.bt:active {
+    color: black;
+    background-color: mediumpurple;
+}
+.bt:disabled {
+    color: black;
+    background-color: dimgrey;
+    cursor: not-allowed;
+}
