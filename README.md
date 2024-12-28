@@ -1,1 +1,1 @@
-## [https://kaniteru.github.io](kaniteru.github.io)
+## [https://kaniteru.github.io/index.html](kaniteru.github.io)
