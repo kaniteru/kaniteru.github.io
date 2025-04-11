@@ -1,0 +1,73 @@
+<!-- Require header.js -->
+<header id="__hdr-header">
+  <div id="__hdr-div-title">
+    <span id="__hdr-span-title">Rikki Patcher</span>
+  </div>
+  <div id="__hdr-div-nav">
+    <span class="__hdr-span-nav" onclick="navigateTo('index')">Home</span>
+    <span class="__hdr-span-nav" onclick="navigateTo('download')">Download</span>
+    <span class="__hdr-span-nav" onclick="navigateTo('usage')">Usage</span>
+    <span class="__hdr-span-nav" onclick="window.open('https://github.com/kaniteru/RikkiPatcher', '_blank').focus()">
+            Github</span>
+  </div>
+</header>
+<style>
+  #__hdr-header {
+    width: 100%;
+    padding: 0.5vmin 2vmin;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: dimgrey;
+  }
+
+  #__hdr-div-title {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  #__hdr-span-title {
+    font-family: 'Architects Daughter',serif;
+    font-weight: bold;
+    font-size: 4vmin;
+  }
+
+  #__hdr-div-nav {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .__hdr-span-nav {
+    padding-right: 1.2vmin;
+    padding-left: 1.2vmin;
+
+    font-family: 'Architects Daughter',serif;
+    font-size: 2.5vmin;
+  }
+  .__hdr-span-nav:hover {
+    color: purple;
+    cursor: pointer;
+  }
+
+  @media (max-width: 700px) {
+    #__hdr-header {
+      padding-top: 1.2vmin;
+      padding-bottom: 1vmin;
+      flex-direction: column;
+    }
+    #__hdr-div-title {
+      padding-bottom: 1vmin;
+    }
+    #__hdr-span-title {
+      font-size: 6vmin;
+    }
+    .__hdr-span-nav {
+      padding-right: 2vmin;
+      padding-left: 2vmin;
+      font-size: 4vmin;
+    }
+  }
+</style>

@@ -13,132 +13,73 @@
 
         body {
             height: 100vh;
-            overflow: hidden;
             background-color: darkgray;
         }
 
-        header {
-            width: 100%;
-            padding: 0.5vmin 2vmin;
-            position: fixed;
-            display: flex;
-            align-items: center;
-            box-sizing: border-box;
-            background-color: dimgrey;
-        }
-
-        #div-title {
-            flex: 1;
-            display: flex;
-            justify-content: flex-start;
-        }
-
-        #span-title {
-            font-family: 'Architects Daughter',serif;
-            font-weight: bold;
-            font-size: 4vmin;
-        }
-
-        #div-nav {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .span-nav {
-            padding-right: 1.2vmin;
-            padding-left: 1.2vmin;
-
-            font-family: 'Architects Daughter',serif;
-            font-size: 2.5vmin;
-        }
-        .span-nav:hover {
-            color: purple;
-            cursor: pointer;
-        }
-
-        #div-pad {
-            height: 6.5vmin; /*  */
-        }
-
-        #div-content {
-            width: 100%;
-            height: calc(100% - 6.5vmin); /*  */
-        }
-
-        #ifr {
-            width: 100%;
+        #div-main {
             height: 100%;
-            border: none;
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
         }
-        
-        @media (max-width: 700px) {
-            header {
-                padding-top: 1.2vmin;
-                padding-bottom: 1vmin;
-                flex-direction: column;
-            }
-            #div-title {
-                padding-bottom: 1vmin;
-            }
-            #span-title {
-                font-size: 6vmin;
-            }
-            .span-nav {
-                padding-right: 2vmin;
-                padding-left: 2vmin;
-                font-size: 4vmin;
-            }
-            #div-pad {
-                height: 17vmin; /*  */
-            }
-            #div-content {
-                height: calc(100% - 17vmin); /*  */
-            }
+
+        #h1-title {
+            font-family: Architects Daughter, serif;
+            font-weight: bold;
+            font-size: 10vmin;
+        }
+
+        #div-desc {
+            margin-top: 8vmin;
+        }
+
+        #span-desc {
+            font-family: Architects Daughter, serif;
+            font-size: 4vmin;
         }
     </style>
 </head>
 <body>
-<header>
-    <div id="div-title">
-        <span id="span-title">Rikki Patcher</span>
+<div id="header-container"></div>
+<div id="div-main">
+    <div>
+        <h1 id="h1-title">RIKKI PATCHER</h1>
     </div>
-    <div id="div-nav">
-        <span class="span-nav" onclick="addParam('home')">Home</span>
-        <span class="span-nav" onclick="addParam('download')">Download</span>
-        <span class="span-nav" onclick="addParam('usage')">Usage</span>
-        <span class="span-nav" onclick="window.open('https://github.com/kaniteru/RikkiPatcher', '_blank').focus()">
-            Github</span>
+    <div id="div-desc">
+        <span id="span-desc">Translate the
+            「<a href="#" style="color: rebeccapurple;">
+            <span style="font-family: LXGW WenKai TC,serif"
+                  onclick="window.open('https://store.steampowered.com/app/3269960', '_blank').focus()">
+            鼓手余命十日谭</span> (Shiina Taki's Decameron)</a>」
+            into your language and enjoy!</span>
     </div>
-</header>
-<div id="div-pad"></div>
-<div id="div-content">
-    <iframe id="ifr" src="download.html"></iframe>
 </div>
-
+<script src="script/header.js"></script>
 <script>
-    function addParam(p) {
-        const url = new URL(window.location);
-        url.searchParams.set('section', p);
-        window.history.pushState({}, '', url);
-        setSection(p);
-    }
-
-    function setSection(s) {
-        const iframe = document.getElementById('ifr');
-        iframe.src = `${s}.html`;
-    }
-
     document.addEventListener('DOMContentLoaded', () => {
         const urlParams = new URLSearchParams(window.location.search);
 
         if (!urlParams.has('section')) {
-            setSection('home');
             return;
         }
 
         const section = urlParams.get('section');
-        setSection(section);
+
+        switch (section) {
+            case 'download':
+                window.location.href = 'download.html';
+                break;
+            case 'usage':
+                window.location.href = 'usage.html';
+                break;
+            default:
+                window.location.href = 'index.html';
+        }
     });
 </script>
 </body>

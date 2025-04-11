@@ -1,94 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Rikki Patcher-Download</title>
-    <link rel="stylesheet" href="../../fonts.css">
-    <link rel="stylesheet" href="common.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <title>Rikki Patcher Download</title>
+  <link rel="stylesheet" href="../../fonts.css">
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        #div-main {
-            height: 100vh;
+    body {
+      background-color: darkgray;
+    }
 
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+    #div-main {
+      height: 100vh;
 
-        .lg {
-            padding: 2vmin;
-            text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
 
-            font-family: 'Architects Daughter',serif;
-            font-weight: bold;
-            font-size: 3vmin;
-        }
+    .lg {
+      padding: 2vmin;
+      text-align: center;
 
-        .fs {
-            width: 80%;
-            margin-top: 4vmin;
-            margin-bottom: 4vmin;
-            padding: 3vmin;
-            border: 0.3vmin solid black;
+      font-family: 'Architects Daughter',serif;
+      font-weight: bold;
+      font-size: 3vmin;
+    }
 
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-        }
+    .fs {
+      width: 80%;
+      margin-top: 4vmin;
+      margin-bottom: 4vmin;
+      padding: 3vmin;
+      border: 0.3vmin solid black;
 
-        .div-section {
-            display: flex;
-            flex-direction: column;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }
 
-            font-family: 'Overlock',serif;
-            font-size: 2.5vmin;
-        }
-        .div-section > * {
-            margin: 1vmin;
-        }
-        
-        @media (max-width: 700px) {
-            #div-main {
+    .div-section {
+      display: flex;
+      flex-direction: column;
 
-            }
-        }
-    </style>
+      font-family: 'Overlock',serif;
+      font-size: 2.5vmin;
+    }
+    .div-section > * {
+      margin: 1vmin;
+    }
+
+    @media (max-width: 700px) {
+      #div-main {
+
+      }
+    }
+  </style>
 </head>
 <body>
+<div id="header-container"></div>
 <div id="div-main">
-    <fieldset id="fs-patcher" class="fs">
-        <legend class="lg">Rikki Patcher</legend>
-        <div id="div-patcher" class="div-section">
-            <span>Download Patcher and create patch files or apply patches!</span>
+  <fieldset id="fs-patcher" class="fs">
+    <legend class="lg">Rikki Patcher</legend>
+    <div id="div-patcher" class="div-section">
+      <span>Download Patcher and create patch files or apply patches!</span>
 
-            <button class="bt" onclick="window.open('https://github.com/kaniteru/RikkiPatcher/releases/download/v250408/RikkiPatcher-v250408.zip', '_blank').focus()">
-                Download Latest Patcher</button>
-            <button class="bt" onclick="window.open('https://github.com/kaniteru/RikkiPatcher/releases', '_blank').focus()">
-                Version History</button>
-        </div>
-    </fieldset>
-    <fieldset id="fs-patches" class="fs">
-        <legend class="lg">Language patch data</legend>
-        <div id="div-patches" class="div-section">
-            <span>Download the translated patch data and apply it using patcher!</span>
-            <span>For detailed instructions, refer to the Usage section.</span>
+      <button class="bt" onclick="window.open('https://github.com/kaniteru/RikkiPatcher/releases/download/v250408/RikkiPatcher-v250408.zip', '_blank').focus()">
+        Download Latest Patcher</button>
+      <button class="bt" onclick="window.open('https://github.com/kaniteru/RikkiPatcher/releases', '_blank').focus()">
+        Version History</button>
+    </div>
+  </fieldset>
+  <fieldset id="fs-patches" class="fs">
+    <legend class="lg">Language patch data</legend>
+    <div id="div-patches" class="div-section">
+      <span>Download the translated patch data and apply it using patcher!</span>
+      <span>For detailed instructions, refer to the Usage section.</span>
 
-            <button class="bt" onclick="window.open('https://github.com/kaniteru/RikkiPatcher-Patches/archive/refs/heads/main.zip', '_blank').focus()">
-                Download Latest Patch Data</button>
-            <button class="bt" onclick="window.open('https://github.com/kaniteru/RikkiPatcher-Patches', '_blank').focus()">
-                Contribute to the translation patch</button>
-        </div>
-    </fieldset>
+      <button class="bt" onclick="window.open('https://github.com/kaniteru/RikkiPatcher-Patches/archive/refs/heads/main.zip', '_blank').focus()">
+        Download Latest Patch Data</button>
+      <button class="bt" onclick="window.open('https://github.com/kaniteru/RikkiPatcher-Patches', '_blank').focus()">
+        Contribute to the translation patch</button>
+    </div>
+  </fieldset>
 </div>
-
-<script>
-
-</script>
+<script src="script/header.js"></script>
 </body>
 </html>

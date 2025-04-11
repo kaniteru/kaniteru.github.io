@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Rikki Patcher-Usage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rikki Patcher Usage</title>
     <link rel="stylesheet" href="../../fonts.css">
-    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="css/common.css">
     <style>
         * {
             margin: 0;
@@ -12,272 +13,660 @@
             box-sizing: border-box;
         }
 
-        #div-main {
-            height: 100vh;
-            width: 100%;
+        body {
+            font-family: 'Overlock', sans-serif;
+            background-color: darkgray; /* 기존 배경색 유지 */
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .div-span-bt {
-            margin: 7vmin;
+        #content-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 20px 50px;
+        }
+
+        .page-title {
             text-align: center;
-            font-size: 3vmin;
+            margin-bottom: 40px;
+            color: #2e2e2e;
         }
 
-        .how {
-            margin: 3vmin;
-            border: 0.3vmin solid black;
-            border-radius: 2vmin;
-            background-color: gray;
-        }
-
-        .h1-title {
-            margin-bottom: 5vmin;
-            text-align: center;
-            font-size: 5vmin;
+        .page-title h1 {
             font-family: 'Architects Daughter', serif;
+            font-size: 38px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
         }
 
-        .div-how {
-            padding-top: 1vmin;
-            padding-left: 3vmin;
+        .page-title h1:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #4d4d4d, #7a7a7a);
+            border-radius: 3px;
+        }
+
+        .tutorial-container {
+            margin-top: 40px;
+        }
+
+        .tutorial-tabs {
             display: flex;
-            flex-direction: column;
-
-            font-family: 'Overlock', serif;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
-        .div-how-title {
-            font-size: 4vmin;
+        .tab-button {
+            background: #3d3d3d;
+            border: none;
+            padding: 15px 25px;
+            font-family: 'Architects Daughter', serif;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            color: #e0e0e0;
+            outline: none;
         }
 
-        .div-how-content {
-            margin: 1.5vmin;
-            font-size: 3.8vmin;
+        .tab-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+            background: #4a4a4a;
         }
 
-        .div-how-img > img {
-            margin-top: 0.5vmin;
-            margin-bottom: 0.5vmin;
-
-            width: 30vmin;
-            height: 30vmin;
-            /*border: 0.1vmin solid purple;*/
+        .tab-button.active {
+            background: linear-gradient(90deg, #525252, #707070);
+            color: #ffffff;
+            border-color: #999;
+            transform: translateY(-3px);
         }
 
-        .div-how-extracted-files {
-            display: flex;
-            flex-direction: column;
-        }
-        .div-how-extracted-files > img {
-            margin-top: 0.5vmin;
-            margin-bottom: 0.5vmin;
-
-            width: 47vmin;
-            height: 28vmin;
-            border: 0.3vmin solid gray;
-        }
-
-        .how.show {
-            animation: rollDown 0.5s forwards;
-            transform-origin: top;
-        }
-
-        .how.hide {
-            animation: rollUp 0.5s forwards;
-            transform-origin: top;
-        }
-
-        @keyframes rollDown {
-            from {
-                transform: scaleY(0);
-                opacity: 0;
-            }
-            to {
-                transform: scaleY(1);
-                opacity: 1;
-            }
-        }
-
-        @keyframes rollUp {
-            from {
-                transform: scaleY(1);
-                opacity: 1;
-            }
-            to {
-                transform: scaleY(0);
-                opacity: 0;
-            }
-        }
-
-        .hidden {
+        .tutorial-content {
+            background: #f0f0f0;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            margin-bottom: 40px;
             display: none;
+            animation: fadeIn 0.5s ease-in-out;
+            border: 1px solid #ccc;
+        }
+
+        .tutorial-content.active {
+            display: block;
+        }
+
+        .tutorial-section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-family: 'Architects Daughter', serif;
+            font-size: 26px;
+            margin-bottom: 25px;
+            color: #2a2a2a;
+            padding-left: 15px;
+            border-left: 5px solid #555;
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 35px;
+            gap: 25px;
+            flex-direction: column;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        }
+
+        @media (min-width: 768px) {
+            .step {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+        }
+
+        .step-number {
+            flex-shrink: 0;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #4d4d4d, #707070);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Architects Daughter', serif;
+            font-size: 22px;
+            font-weight: bold;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .step-number {
+                margin: 0;
+            }
+        }
+
+        .step-content {
+            flex-grow: 1;
+        }
+
+        .step-description {
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #3a3a3a;
+        }
+
+        .step-description strong {
+            color: #444;
+            font-weight: 700;
+            background: linear-gradient(transparent 70%, #d8d8d8 0%);
+        }
+
+        .step-description p {
+            margin-bottom: 12px;
+        }
+
+        .step-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .step-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 1px solid #ddd;
+        }
+
+        @media (min-width: 768px) {
+            .step-image {
+                max-width: 45%;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .step-image {
+                max-width: 30%;
+            }
+        }
+
+        /* 데스크탑에서 이미지 크게 보기 */
+        @media (min-width: 1200px) {
+            .step-image:hover {
+                transform: scale(1.05);
+                box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+                z-index: 2;
+                position: relative;
+            }
+        }
+
+        .alert-box {
+            background-color: #e6e6e6;
+            color: #444;
+            padding: 18px 22px;
+            border-radius: 8px;
+            margin: 25px 0;
+            border-left: 5px solid #707070;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.07);
+        }
+
+        .alert-box::before {
+            content: "⚠️";
+            display: inline-block;
+            margin-right: 12px;
+            font-size: 18px;
+        }
+
+        .alert-box strong {
+            font-weight: 700;
+            color: #333;
+        }
+
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(3px);
+        }
+
+        .modal-content {
+            max-width: 95%;
+            max-height: 95%;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            border-radius: 5px;
+            position: relative;
+            transition: transform 0.3s ease;
+            transform: scale(0.95);
+        }
+
+        /* 데스크탑에서 모달 이미지 더 크게 표시 */
+        @media (min-width: 1200px) {
+            .modal-content {
+                max-width: 80%;
+                max-height: 85%;
+            }
+        }
+
+        .image-modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: rgba(30,30,30,0.7);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .close-modal:hover {
+            background: rgba(60,60,60,0.8);
+            transform: rotate(90deg);
+        }
+
+        .external-link {
+            color: #4d4d4d;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+            padding-right: 20px;
+            border-bottom: 1px dotted #777;
+        }
+
+        .external-link:after {
+            content: '↗';
+            font-size: 14px;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+
+        .external-link:hover {
+            color: #666;
+            border-bottom: 1px solid #666;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #4d4d4d, #707070);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 99;
+            font-size: 20px;
+        }
+
+        #back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+            background: linear-gradient(135deg, #555, #7a7a7a);
         }
     </style>
 </head>
 <body>
-<div id="div-main">
-<div id="div-title"></div>
-<div id="div-content">
-    <div class="div-span-bt">
-        <button id="button-patch" class="span-bt bt">How can I apply the patch data into game?</button>
+<div id="header-container"></div>
+
+<div id="content-container">
+    <div class="page-title">
+        <h1>Rikki Patcher Usage Guide</h1>
     </div>
 
-    <div id="div-how_to_apply_patch" class="how hidden">
-        <div class="div-how">
-            <div>
-                <h1 class="h1-title">How can I apply the patch data into game?</h1>
-            </div>
-            <div class="div-how-title">
-                <h2>Step 1</h2>
-            </div>
-            <div class="div-how-content">
-                <div class="div-how-desc">
-                    <p>Click the <b>'Apply patch to game'</b> button.</p>
-                </div>
-                <div class="div-how-img">
-                    <img src="res/img/patch/1.png">
-                </div>
-            </div>
+    <div class="tutorial-container">
+        <div class="tutorial-tabs">
+            <button class="tab-button active" data-tab="apply-patch">Apply Patch Data</button>
+            <button class="tab-button" data-tab="make-patch">Create Custom Patch</button>
         </div>
-        <div class="div-how">
-            <div class="div-how-title">
-                <h2>Step 2</h2>
-            </div>
-            <div class="div-how-content">
-                <div class="div-how-desc">
-                    <p>Click the <b>'Select Folder'</b> button then, select patch data folder.</p>
-                </div>
-                <div class="div-how-img">
-                    <img src="res/img/patch/2.png">
-                </div>
-                <div class="div-how-img">
-                    <img src="res/img/patch/3.png">
-                </div>
-            </div>
-        </div>
-        <div class="div-how">
-            <div class="div-how-title">
-                <h2>Step 3</h2>
-            </div>
-            <div class="div-how-content">
-                <div class="div-how-desc">
-                    <p>Click the <b>'Start Patch'</b> button.</p>
-                </div>
-                <div class="div-how-img">
-                    <img src="res/img/patch/4.png">
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <div class="div-span-bt">
-        <button id="button-extract" class="span-bt bt">How can I make the custom patch data?</button>
-    </div>
+        <!-- Apply Patch Tutorial -->
+        <div id="apply-patch" class="tutorial-content active">
+            <div class="tutorial-section">
+                <h2 class="section-title">How to Apply the Patch Data to Game</h2>
 
-    <div id="div-how_to_make_patch" class="how hidden">
-        <div class="div-how">
-            <div>
-                <h1 class="h1-title">How can I make the custom patch data?</h1>
-            </div>
-            <div class="div-how-title">
-                <h2>Step 1</h2>
-            </div>
-            <div class="div-how-content">
-                <div class="div-how-desc">
-                    <p>Use <b>'Extract data from game'</b>.</p>
-                </div>
-                <div class="div-how-img">
-                    <img src="res/img/extract/1.png">
-                </div>
-                <div class="div-how-img">
-                    <img src="res/img/extract/2.png">
-                </div>
-            </div>
-        </div>
-        <div class="div-how">
-            <div class="div-how-title">
-                <h2>Step 2</h2>
-            </div>
-            <div class="div-how-content">
-                <div class="div-how-desc">
-                    <p>If extract finished, copy the <b>'extracted'</b> folder then, paste into different place.</p>
-                    <p>This folder is your custom patch data.</p>
-                </div>
-                <div class="div-how-img">
-                    <img src="res/img/extract/5.png">
-                </div>
-                <div class="div-how-img">
-                    <img src="res/img/extract/6.png">
-                </div>
-                <div class="div-how-desc">
-                    <p>Renaming the folder if you want.</p>
-                </div>
-                <div class="div-how-img">
-                    <img src="res/img/extract/7.png">
-                </div>
-            </div>
-        </div>
-        <div class="div-how">
-            <div class="div-how-title">
-                <h2>Step 3</h2>
-            </div>
-            <div class="div-how-content">
-                <div class="div-how-desc">
-                    <p>Modify the files in the your custom patch data.</p>
-                    <p>If you need an example, please refer to <a href="" onclick="window.open('https://github.com/kaniteru/RikkiPatcher-Patches', '_blank').focus()">
-                        this repo</a>.</p>
-                    <br>
-                    <p><b>Alert: Don't modify the files in 'migration' folder!</b></p>
-                </div>
-                <div class="div-how-img">
-                    <img src="res/img/extract/8.png">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-description">
+                            <p>Click the <strong>'Apply patch to game'</strong> button in the main interface.</p>
+                        </div>
+                        <div class="step-images">
+                            <img src="../ritPatcher/res/img/patch/1.png" alt="Apply patch button" class="step-image">
+                        </div>
+                    </div>
                 </div>
 
-                <div class="div-how-extracted-files">
-                    <img src="res/img/extract/dialogue_choice_in-game.png">
-                    <img src="res/img/extract/dialog.png">
-                    <img src="res/img/extract/setting.png">
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-description">
+                            <p>Click the <strong>'Select Folder'</strong> button and choose the patch data folder from your computer.</p>
+                        </div>
+                        <div class="step-images">
+                            <img src="../ritPatcher/res/img/patch/2.png" alt="Select folder" class="step-image">
+                            <img src="../ritPatcher/res/img/patch/3.png" alt="Choose patch data folder" class="step-image">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-description">
+                            <p>Review the selected patch information and click the <strong>'Start Patch'</strong> button to begin the patching process.</p>
+                        </div>
+                        <div class="step-images">
+                            <img src="../ritPatcher/res/img/patch/4.png" alt="Start patch" class="step-image">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
+        <!-- Make Patch Tutorial -->
+        <div id="make-patch" class="tutorial-content">
+            <div class="tutorial-section">
+                <h2 class="section-title">How to Create Custom Patch Data</h2>
+
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <div class="step-description">
+                            <p>From the main menu, click on <strong>'Extract data from game'</strong> to begin the extraction process.</p>
+                        </div>
+                        <div class="step-images">
+                            <img src="../ritPatcher/res/img/extract/1.png" alt="Extract data button" class="step-image">
+                            <img src="../ritPatcher/res/img/extract/2.png" alt="Extract data screen" class="step-image">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <div class="step-description">
+                            <p>When the extraction is complete, navigate to the <strong>'extracted'</strong> folder that was created.</p>
+                            <p>Copy this folder to a different location - this will be the base for your custom patch data.</p>
+                            <p>You can rename the folder to something meaningful for your patch.</p>
+                        </div>
+                        <div class="step-images">
+                            <img src="../ritPatcher/res/img/extract/5.png" alt="Extracted folder" class="step-image">
+                            <img src="../ritPatcher/res/img/extract/6.png" alt="Copy extracted folder" class="step-image">
+                            <img src="../ritPatcher/res/img/extract/7.png" alt="Rename folder" class="step-image">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <div class="step-description">
+                            <p>Open the files in your custom patch folder and modify them according to your preferences.</p>
+                            <p>You can change dialogue options, UI elements, game settings, and more.</p>
+                            <p>For examples and inspiration, check out <a href="https://github.com/kaniteru/RikkiPatcher-Patches" target="_blank" class="external-link">this repository</a>.</p>
+                        </div>
+
+                        <div class="alert-box">
+                            <p><strong>Important:</strong> Do not modify any files in the 'migration' folder! These are essential for the patching process to work correctly.</p>
+                        </div>
+
+                        <div class="step-images">
+                            <img src="../ritPatcher/res/img/extract/8.png" alt="Modify files" class="step-image">
+                            <img src="../ritPatcher/res/img/extract/dialogue_choice_in-game.png" alt="Dialogue choice example" class="step-image">
+                            <img src="../ritPatcher/res/img/extract/dialog.png" alt="Dialog example" class="step-image">
+                            <img src="../ritPatcher/res/img/extract/setting.png" alt="Setting example" class="step-image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+<div id="image-modal" class="image-modal">
+    <span class="close-modal">&times;</span>
+    <img class="modal-content" id="modal-img">
 </div>
+
+<div id="back-to-top">↑</div>
+
+<script src="script/header.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const toggleButton1 = document.getElementById('button-patch');
-        const toggleButton2 = document.getElementById('button-extract');
-        const div1 = document.getElementById('div-how_to_apply_patch');
-        const div2 = document.getElementById('div-how_to_make_patch');
+    document.addEventListener('DOMContentLoaded', function() {
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tutorialContents = document.querySelectorAll('.tutorial-content');
 
-        toggleButton1.addEventListener('click', function () {
-            if (div1.classList.contains('hidden')) {
-                div1.classList.remove('hidden');
-                div1.classList.remove('hide');
-                div1.classList.add('show');
-            } else if (div1.classList.contains('show')) {
-                div1.classList.remove('show');
-                div1.classList.add('hide');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tutorialContents.forEach(content => content.classList.remove('active'));
+
+                // Add active class to clicked button and corresponding content
+                button.classList.add('active');
+                const tabId = button.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+
+                // Scroll to top of content
+                document.getElementById(tabId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Enhanced Image modal functionality
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-img');
+        const closeModal = document.querySelector('.close-modal');
+        const images = document.querySelectorAll('.step-image');
+
+        // 현재 확대/축소 상태
+        let scale = 1;
+        let isDragging = false;
+        let startX, startY, translateX = 0, translateY = 0;
+
+        images.forEach(img => {
+            img.addEventListener('click', () => {
+                modal.style.display = 'flex';
+                modalImg.src = img.src;
+
+                // 확대/축소 관련 상태 초기화
+                scale = 1;
+                translateX = 0;
+                translateY = 0;
+                modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+
+                // 애니메이션 효과를 위한 지연
                 setTimeout(() => {
-                    div1.classList.add('hidden');
-                }, 500);
+                    modal.classList.add('active');
+                }, 10);
+            });
+        });
+
+        function hideModal() {
+            modal.classList.remove('active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+            }, 300);
+        }
+
+        closeModal.addEventListener('click', hideModal);
+
+        // 모달 외부 클릭 시 닫기
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                hideModal();
             }
         });
 
-        toggleButton2.addEventListener('click', function () {
-            if (div2.classList.contains('hidden')) {
-                div2.classList.remove('hidden');
-                div2.classList.remove('hide');
-                div2.classList.add('show');
-            } else if (div2.classList.contains('show')) {
-                div2.classList.remove('show');
-                div2.classList.add('hide');
-                setTimeout(() => {
-                    div2.classList.add('hidden');
-                }, 500);
+        // ESC 키 누르면 모달 닫기
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                hideModal();
             }
         });
+
+        // 데스크탑에서 확대/축소 기능 추가
+        if (window.innerWidth >= 1024) {
+            // 마우스 휠로 확대/축소
+            modalImg.addEventListener('wheel', function(e) {
+                e.preventDefault();
+
+                // 축소 제한
+                if (e.deltaY > 0 && scale > 0.5) {
+                    scale -= 0.1;
+                }
+                // 확대 제한
+                else if (e.deltaY < 0 && scale < 3) {
+                    scale += 0.1;
+                }
+
+                modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+            });
+
+            // 확대된 이미지 드래그 이동 기능
+            modalImg.addEventListener('mousedown', function(e) {
+                if (scale > 1) {
+                    isDragging = true;
+                    startX = e.clientX;
+                    startY = e.clientY;
+                }
+            });
+
+            document.addEventListener('mousemove', function(e) {
+                if (isDragging) {
+                    const dx = e.clientX - startX;
+                    const dy = e.clientY - startY;
+
+                    translateX += dx / scale;
+                    translateY += dy / scale;
+
+                    modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+
+                    startX = e.clientX;
+                    startY = e.clientY;
+                }
+            });
+
+            document.addEventListener('mouseup', function() {
+                isDragging = false;
+            });
+        }
+
+        // Back to top button (최적화)
+        const backToTopButton = document.getElementById('back-to-top');
+        let isScrolling = false;
+
+        window.addEventListener('scroll', () => {
+            if (!isScrolling) {
+                isScrolling = true;
+
+                requestAnimationFrame(() => {
+                    if (window.pageYOffset > 300) {
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        backToTopButton.classList.remove('visible');
+                    }
+                    isScrolling = false;
+                });
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 이미지 지연 로딩 최적화
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        const src = img.getAttribute('data-src');
+                        if (src) {
+                            img.src = src;
+                            img.removeAttribute('data-src');
+                        }
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('.step-image').forEach(img => {
+                if (img.hasAttribute('data-src')) {
+                    imageObserver.observe(img);
+                }
+            });
+        }
     });
 </script>
 </body>
