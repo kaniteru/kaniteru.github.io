@@ -15,7 +15,7 @@
 
         body {
             font-family: 'Overlock', sans-serif;
-            background-color: darkgray; /* 기존 배경색 유지 */
+            background-color: darkgray;
             color: #333;
             line-height: 1.6;
             overflow-x: hidden;
@@ -212,7 +212,6 @@
             }
         }
 
-        /* 데스크탑에서 이미지 크게 보기 */
         @media (min-width: 1200px) {
             .step-image:hover {
                 transform: scale(1.05);
@@ -270,7 +269,6 @@
             transform: scale(0.95);
         }
 
-        /* 데스크탑에서 모달 이미지 더 크게 표시 */
         @media (min-width: 1200px) {
             .modal-content {
                 max-width: 80%;
@@ -369,6 +367,73 @@
             box-shadow: 0 5px 20px rgba(0,0,0,0.4);
             background: linear-gradient(135deg, #555, #7a7a7a);
         }
+
+        .image-notice {
+            text-align: center;
+            background-color: #eaeaea;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid #555;
+            font-style: italic;
+            color: #444;
+        }
+
+        .image-container {
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .image-container:hover {
+            transform: scale(1.02);
+        }
+
+        .image-container::after {
+            content: "🔍";
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: rgba(0,0,0,0.6);
+            color: white;
+            padding: 5px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        .enlarged-view {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            cursor: zoom-out;
+        }
+
+        .enlarged-image {
+            max-width: 90%;
+            max-height: 90%;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .download-link {
+            color: #0066cc;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .download-link:hover {
+            color: #004080;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -383,6 +448,10 @@
         <div class="tutorial-tabs">
             <button class="tab-button active" data-tab="apply-patch">Apply Patch Data</button>
             <button class="tab-button" data-tab="make-patch">Create Custom Patch</button>
+        </div>
+
+        <div class="image-notice">
+            <p><strong>Note:</strong> Click on any image to enlarge it for a better view. Click again to close.</p>
         </div>
 
         <!-- Apply Patch Tutorial -->
@@ -407,6 +476,7 @@
                     <div class="step-content">
                         <div class="step-description">
                             <p>Click the <strong>'Select Folder'</strong> button and choose the patch data folder from your computer.</p>
+                            <p><a href="https://kaniteru.github.io/project/rikkipatcher/download.html" class="download-link">Where can I download the patch data?</a></p>
                         </div>
                         <div class="step-images">
                             <img src="res/img/patch/2.png" alt="Select folder" class="step-image">
@@ -499,33 +569,25 @@
 <script src="script/header.js"></script>
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Tab functionality
         const tabButtons = document.querySelectorAll('.tab-button');
         const tutorialContents = document.querySelectorAll('.tutorial-content');
 
         tabButtons.forEach(button => {
             button.addEventListener('click', () => {
-                // Remove active class from all buttons and contents
                 tabButtons.forEach(btn => btn.classList.remove('active'));
                 tutorialContents.forEach(content => content.classList.remove('active'));
-
-                // Add active class to clicked button and corresponding content
                 button.classList.add('active');
                 const tabId = button.getAttribute('data-tab');
                 document.getElementById(tabId).classList.add('active');
-
-                // Scroll to top of content
                 document.getElementById(tabId).scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
-        // Enhanced Image modal functionality
         const modal = document.getElementById('image-modal');
         const modalImg = document.getElementById('modal-img');
         const closeModal = document.querySelector('.close-modal');
         const images = document.querySelectorAll('.step-image');
 
-        // 현재 확대/축소 상태
         let scale = 1;
         let isDragging = false;
         let startX, startY, translateX = 0, translateY = 0;
@@ -535,13 +597,11 @@
                 modal.style.display = 'flex';
                 modalImg.src = img.src;
 
-                // 확대/축소 관련 상태 초기화
                 scale = 1;
                 translateX = 0;
                 translateY = 0;
                 modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
 
-                // 애니메이션 효과를 위한 지연
                 setTimeout(() => {
                     modal.classList.add('active');
                 }, 10);
@@ -557,31 +617,26 @@
 
         closeModal.addEventListener('click', hideModal);
 
-        // 모달 외부 클릭 시 닫기
         modal.addEventListener('click', function(e) {
             if (e.target === modal) {
                 hideModal();
             }
         });
 
-        // ESC 키 누르면 모달 닫기
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && modal.style.display === 'flex') {
                 hideModal();
             }
         });
 
-        // 데스크탑에서 확대/축소 기능 추가
         if (window.innerWidth >= 1024) {
-            // 마우스 휠로 확대/축소
             modalImg.addEventListener('wheel', function(e) {
                 e.preventDefault();
 
-                // 축소 제한
                 if (e.deltaY > 0 && scale > 0.5) {
                     scale -= 0.1;
                 }
-                // 확대 제한
+
                 else if (e.deltaY < 0 && scale < 3) {
                     scale += 0.1;
                 }
@@ -589,7 +644,6 @@
                 modalImg.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
             });
 
-            // 확대된 이미지 드래그 이동 기능
             modalImg.addEventListener('mousedown', function(e) {
                 if (scale > 1) {
                     isDragging = true;
@@ -618,7 +672,6 @@
             });
         }
 
-        // Back to top button (최적화)
         const backToTopButton = document.getElementById('back-to-top');
         let isScrolling = false;
 
@@ -627,7 +680,7 @@
                 isScrolling = true;
 
                 requestAnimationFrame(() => {
-                    if (window.pageYOffset > 300) {
+                    if (window.screenY > 300) {
                         backToTopButton.classList.add('visible');
                     } else {
                         backToTopButton.classList.remove('visible');
@@ -644,7 +697,6 @@
             });
         });
 
-        // 이미지 지연 로딩 최적화
         if ('IntersectionObserver' in window) {
             const imageObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
